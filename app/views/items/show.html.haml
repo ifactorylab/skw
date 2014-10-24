@@ -1,22 +1,25 @@
 %p#notice= notice
 
 %p
-  %b Repository:
-  = @item.repo.name
+  %b Location:
+  = repo(@item)
 %p
-  %b Item type:
-  = @item.type.name
+  %b Name:
+  = name(@item)
 %p
-  %b Item vintage:
+  %b Type:
+  = type(@item)
+%p
+  %b Vintage:
   = @item.vintage.year
 %p
-  %b Item region:
-  = "#{@item.region.level}, #{@item.region.region}, #{@item.region.country}"
+  %b Region:
+  = region(@item)
 %p
-  %b Item size:
-  = "#{@item.size.name} (#{@item.size.amount} ml)"
+  %b Size:
+  = size(@item)
 %p
-  %b Item count:
+  %b Count:
   = @item.item_count
 
 = link_to 'Edit', edit_item_path(@item)

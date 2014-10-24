@@ -1,0 +1,23 @@
+%h1 Item Regions
+
+%table
+  %tr
+    %th Country
+    %th Region
+    %th Level
+    %th
+    %th
+    %th
+
+  - @regions.each do |region|
+    %tr
+      %td= region.country
+      %td= region.region
+      %td= region.level
+      %td= link_to 'Show', "/items/regions/:#{region.id}"
+      %td= link_to 'Edit', edit_region_path(region)
+      %td= link_to 'Destroy', "/items/regions/:#{region.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Item region', new_region_path

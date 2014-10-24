@@ -14,11 +14,11 @@
 
   - @items.each do |item|
     %tr
-      %td= item.type.name
-      %td= item.name
+      %td= type(item)
+      %td= name(item)
       %td= item.vintage.year
-      %td= "#{item.region.level}, #{item.region.region}, #{item.region.country}"
-      %td= "#{item.size.name} (#{item.size.amount} ml)"
+      %td= region(item)
+      %td= size(item)
       %td= item.item_count
       %td= link_to 'Show', item
       %td= link_to 'Edit', edit_item_path(item)

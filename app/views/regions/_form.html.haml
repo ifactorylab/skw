@@ -1,9 +1,9 @@
-= form_for @item_region do |f|
-  - if @item_region.errors.any?
+= form_for @region do |f|
+  - if @region.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@item_region.errors.count, "error")} prohibited this item_region from being saved:"
+      %h2= "#{pluralize(@region.errors.count, "error")} prohibited this region from being saved:"
       %ul
-        - @item_region.errors.full_messages.each do |msg|
+        - @region.errors.full_messages.each do |msg|
           %li= msg
 
   .field

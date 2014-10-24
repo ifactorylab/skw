@@ -1,7 +1,5 @@
 class Item < ActiveRecord::Base
-  def repo
-    @repo ||= Repo.find(repo_id)
-  end
+  belongs_to :repo
 
   def type
     @item_type ||= ItemType.find(item_type_id)
@@ -12,7 +10,7 @@ class Item < ActiveRecord::Base
   end
 
   def region
-    @item_region ||= ItemRegion.find(item_region_id)
+    @item_region ||= Region.find(item_region_id)
   end
 
   def vintage

@@ -7,20 +7,20 @@
           %li= msg
 
   .field
-    = f.label :repository_id
-    = f.select :repo_id, @repos.map { |r| [r.name, r.id] }
+    = f.label :location
+    = f.select :repo_id, @repos.map { |r| [r.name.camelize, r.id] }
   .field
-    = f.label :item_type_id
-    = f.select :item_type_id, @item_types.map { |t| [t.name, t.id] }
+    = f.label :type
+    = f.select :item_type_id, @item_types.map { |t| [t.name.camelize, t.id] }
   .field
-    = f.label :vintage_id
+    = f.label :vintage
     = f.select :vintage_id, @item_vintages.map { |t| [t.year, t.id] }
   .field
-    = f.label :item_region_id
-    = f.select :item_region_id, @item_regions.map { |t| ["#{t.level}, #{t.region}, #{t.country}", t.id] }
+    = f.label :region
+    = f.select :item_region_id, @regions.map { |t| ["#{t.level.camelize}, #{t.region.camelize}, #{t.country.camelize}", t.id] }
   .field
-    = f.label :item_size_id
-    = f.select :item_size_id, @item_sizes.map { |s| [s.name, s.id] }
+    = f.label :size
+    = f.select :item_size_id, @item_sizes.map { |s| [s.name.camelize, s.id] }
   .field
     = f.label :name
     = f.text_field :name

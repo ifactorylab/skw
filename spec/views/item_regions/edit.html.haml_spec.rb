@@ -12,7 +12,7 @@ RSpec.describe "item_regions/edit", :type => :view do
   it "renders the edit item_region form" do
     render
 
-    assert_select "form[action=?][method=?]", item_region_path(@item_region), "post" do
+    assert_select "form[action=?][method=?]", region_path(@item_region), "post" do
 
       assert_select "input#item_region_country[name=?]", "item_region[country]"
 

@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   before_action :set_item_types, only: [:new, :edit]
   before_action :set_item_sizes, only: [:new, :edit]
   before_action :set_item_vintages, only: [:new, :edit]
-  before_action :set_item_regions, only: [:new, :edit]
+  before_action :set_regions, only: [:new, :edit]
   respond_to :html
 
   def index
@@ -69,8 +69,8 @@ class ItemsController < ApplicationController
     @item_vintages = ItemVintage.all
   end
 
-  def set_item_regions
-    @item_regions = ItemRegion.all
+  def set_regions
+    @regions = Region.all
   end
 
   def item_params

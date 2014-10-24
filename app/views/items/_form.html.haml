@@ -1,0 +1,31 @@
+= form_for @item do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+      %ul
+        - @item.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :repository_id
+    = f.select :repo_id, @repos.map { |r| [r.name, r.id] }
+  .field
+    = f.label :item_type_id
+    = f.select :item_type_id, @item_types.map { |t| [t.name, t.id] }
+  .field
+    = f.label :vintage_id
+    = f.select :vintage_id, @item_vintages.map { |t| [t.year, t.id] }
+  .field
+    = f.label :item_region_id
+    = f.select :item_region_id, @item_regions.map { |t| ["#{t.level}, #{t.region}, #{t.country}", t.id] }
+  .field
+    = f.label :item_size_id
+    = f.select :item_size_id, @item_sizes.map { |s| [s.name, s.id] }
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :item_count
+    = f.number_field :item_count
+  .actions
+    = f.submit 'Save'

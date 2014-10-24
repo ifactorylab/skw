@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @item_size.name
+%p
+  %b Amount:
+  = @item_size.amount
+
+= link_to 'Edit', edit_item_size_path(@item_size)
+\|
+= link_to 'Back', item_sizes_path

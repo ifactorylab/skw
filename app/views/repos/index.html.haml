@@ -1,0 +1,19 @@
+%h1 Listing repositories
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @repos.each do |repo|
+    %tr
+      %td= repo.name
+      %td= link_to 'Show', "repos/#{repo.id}/items"
+      %td= link_to 'Edit', edit_repo_path(repo)
+      %td= link_to 'Destroy', repo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Repository', new_repo_path

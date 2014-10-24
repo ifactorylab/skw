@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Repository Name:
+  = @repo.name
+
+= link_to 'Edit', edit_repo_path(@repo)
+\|
+= link_to 'Back', repos_path

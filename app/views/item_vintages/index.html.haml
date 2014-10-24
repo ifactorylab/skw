@@ -1,0 +1,19 @@
+%h1 Item Vintages
+
+%table
+  %tr
+    %th Year
+    %th
+    %th
+    %th
+
+  - @item_vintages.each do |item_vintage|
+    %tr
+      %td= item_vintage.year
+      %td= link_to 'Show', item_vintage
+      %td= link_to 'Edit', edit_item_vintage_path(item_vintage)
+      %td= link_to 'Destroy', item_vintage, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Item vintage', new_item_vintage_path

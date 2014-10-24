@@ -1,0 +1,29 @@
+%h1 Items in #{@repo.name.camelize}
+
+%table
+  %tr
+    %th Type
+    %th Name
+    %th Vintage
+    %th Region
+    %th Size
+    %th Count
+    %th
+    %th
+    %th
+
+  - @items.each do |item|
+    %tr
+      %td= item.type.name
+      %td= item.name
+      %td= item.vintage.year
+      %td= "#{item.region.level}, #{item.region.region}, #{item.region.country}"
+      %td= "#{item.size.name} (#{item.size.amount} ml)"
+      %td= item.item_count
+      %td= link_to 'Show', item
+      %td= link_to 'Edit', edit_item_path(item)
+      %td= link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Item', new_item_path

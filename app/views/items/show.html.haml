@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Repository:
+  = @item.repo.name
+%p
+  %b Item type:
+  = @item.type.name
+%p
+  %b Item vintage:
+  = @item.vintage.year
+%p
+  %b Item region:
+  = "#{@item.region.level}, #{@item.region.region}, #{@item.region.country}"
+%p
+  %b Item size:
+  = "#{@item.size.name} (#{@item.size.amount} ml)"
+%p
+  %b Item count:
+  = @item.item_count
+
+= link_to 'Edit', edit_item_path(@item)
+\|
+= link_to 'Back', repos_path

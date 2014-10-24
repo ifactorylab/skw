@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Year:
+  = @item_vintage.year
+
+= link_to 'Edit', edit_item_vintage_path(@item_vintage)
+\|
+= link_to 'Back', item_vintages_path

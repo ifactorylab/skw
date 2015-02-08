@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :repos
 
   scope '/repos' do
+    get '/all/items',            to: 'items#all'
     scope '/:id/items' do
       get "(.:format)",          to: 'items#index'
     end

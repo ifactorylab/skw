@@ -23,6 +23,9 @@ class ItemsController < ApplicationController
     respond_with(@item)
   end
 
+  def all
+  end
+
   def edit
   end
 

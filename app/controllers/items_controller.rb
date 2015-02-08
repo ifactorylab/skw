@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_repo, only: [:index]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_repos, only: [:new, :edit]
+  before_action :set_repos, only: [:new, :edit, :all]
   before_action :set_item_types, only: [:new, :edit]
   before_action :set_item_sizes, only: [:new, :edit]
   before_action :set_item_vintages, only: [:new, :edit]
@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def all
+    @items = []
+    @repos.each { |repo| @items += repo.items }
+    render "index"
   end
 
   def edit

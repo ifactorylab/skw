@@ -7,16 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 regions = [{country: 'France', region: 'Bordeaux', level: 'Pauillac'},
            {country: 'France', region: 'Bordeaux', level: 'Saint Estèphe'}]
-regions.each { |r| Region.find_or_create_by(r) }
+regions.each { |r| Region.find_or_create_by(r).save }
 
 types = [{name: 'Red'}, {name: 'White'}, {name: 'Rose'}, {name: 'Porto'}]
-types.each { |t| ItemType.find_or_create_by(t) }
+types.each { |t| ItemType.find_or_create_by(t).save }
 
 sizes = [{name: 'Demi', amount: 375}, {name: 'Standard', amount: 750}, {name: 'Magnum', amount: 1500}]
-sizes.each { |s| ItemSize.find_or_create_by(s) }
+sizes.each { |s| ItemSize.find_or_create_by(s).save }
 
 for year in 1940..80 do
-  ItemVintage.find_or_create_by({year: year})
+  ItemVintage.find_or_create_by({year: year}).save
 end
 
 

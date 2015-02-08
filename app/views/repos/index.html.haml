@@ -16,6 +16,13 @@
       %td= link_to 'Edit', edit_repo_path(repo)
       %td= link_to 'Destroy', repo, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
+  %tr
+    %td= "All"
+    %td= all_repo_count(@repos)
+    %td= link_to 'Show', "/repos/all/items"
+    %td= link_to 'Edit', edit_repo_path(@repos[0])
+    %td= link_to 'Destroy', @repos[0], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
 %br
 
 = link_to 'New Repo', new_repo_path

@@ -27,22 +27,3 @@ for y in 1940..2020 do
   ItemVintage.find_or_create_by({year: y}).save
 end
 
-def get_year(yy)
-  if yy > 20
-    yy + 1900
-  elsif yy <= 20
-    yy + 2000
-  else
-    0
-  end
-end
-
-Item.all.each do |i|
-  item = i.name.split(" - ");
-  yy = get_year(item[1].to_i)
-  vintage = ItemVintage.where(year: yy).first
-  puts "#{item[0]}, #{item[1]}, #{yy}"
-
-  i.vintage_id = vintage.id
-  i.save!
-end

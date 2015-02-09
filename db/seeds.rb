@@ -42,6 +42,8 @@ Item.all.each do |i|
   item = i.name.split(" - ");
   yy = get_year(item[1].to_i)
   vintage = ItemVintage.where(year: yy).first
+  puts "#{item[0]}, #{item[1]}, #{yy}"
+
   i.vintage_id = vintage.id
   i.save!
 end

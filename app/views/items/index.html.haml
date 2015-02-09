@@ -1,4 +1,4 @@
-%h1 Items in #{@repo.name.camelize}
+%h1 Items in #{@repo_name}
 
 %table
   %tr
@@ -10,20 +10,20 @@
     %th Count
     %th
     %th
-    %th
 
   - @items.each do |item|
     %tr
       %td= type(item)
-      %td= name(item)
+      %td= link_to name(item), item
       %td= item.vintage.year
       %td= region(item)
       %td= size(item)
       %td= item.item_count
-      %td= link_to 'Show', item
       %td= link_to 'Edit', edit_item_path(item)
       %td= link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Item', new_item_path
+= link_to 'Add Item', new_item_path
+\|
+= link_to 'Back to List', repos_path

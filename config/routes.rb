@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: "repos#index"
 
-
   resources :item_vintages
   resources :item_sizes
   resources :item_types

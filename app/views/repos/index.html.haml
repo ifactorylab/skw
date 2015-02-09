@@ -10,18 +10,15 @@
 
   - @repos.each do |repo|
     %tr
-      %td= repo.name
+      %td= link_to repo.name, "/repos/#{repo.id}/items"
       %td= repo.items_count
-      %td= link_to 'Show', "/repos/#{repo.id}/items"
       %td= link_to 'Edit', edit_repo_path(repo)
       %td= link_to 'Destroy', repo, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  %tr
-    %td= "All"
-    %td= all_repo_count(@repos)
-    %td= link_to 'Show', "/repos/all/items"
-    %td= link_to 'Edit', edit_repo_path(@repos[0])
-    %td= link_to 'Destroy', @repos[0], :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - if @repos.count > 0
+    %tr
+      %td= link_to "All", "/repos/all/items"
+      %td= all_repo_count(@repos)
 
 %br
 

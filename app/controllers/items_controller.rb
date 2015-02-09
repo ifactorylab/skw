@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = @repo.items
+    @repo_name = @repo.name.camelize
     respond_with(@items)
   end
 
@@ -25,7 +26,9 @@ class ItemsController < ApplicationController
 
   def all
     @items = []
+    @repo_name = "All"
     @repos.each { |repo| @items += repo.items }
+    @items.sort_by! { |item| item.name }
     render "index"
   end
 

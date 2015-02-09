@@ -27,8 +27,11 @@ class ItemsController < ApplicationController
   def all
     @items = []
     @repo_name = "All"
-    @repos.each { |repo| @items += repo.items }
-    @items.sort_by! { |item| item.name }
+    repo_ids =  @repos.map { |repo| repo.id }
+    @items = Item.select("item_type_id, item_region_id, item_size_id, name, sum(item_count) as item_count, vintage_id")
+      .where(repo_id: repo_ids).order(name: :asc).group("name, vintage_id, item_size_id, item_type_id, item_region_id")
+    #@repos.each { |repo| @items += repo.items }
+    #@items.sort_by! { |item| item.name }
     render "index"
   end
 

@@ -14,13 +14,17 @@
   - @items.each do |item|
     %tr
       %td= type(item)
-      %td= link_to name(item), item
+      - unless @repo_name == "All"
+        %td= link_to name(item), item
+      - else
+        %td= name(item)
       %td= item.vintage.year
       %td= region(item)
       %td= size(item)
       %td= item.item_count
-      %td= link_to 'Edit', edit_item_path(item)
-      %td= link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - unless @repo_name == "All"
+        %td= link_to 'Edit', edit_item_path(item)
+        %td= link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

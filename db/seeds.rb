@@ -21,9 +21,30 @@
 # sizes = [{name: 'Demi', amount: 375}, {name: 'Standard', amount: 750}, {name: 'Magnum', amount: 1500}]
 # sizes.each { |s| ItemSize.find_or_create_by(s).save }
 
-ItemVintage.find_or_create_by({year: 0}).save
+# ItemVintage.find_or_create_by({year: 0}).save
+#
+# for y in 1940..2020 do
+#   ItemVintage.find_or_create_by({year: y}).save
+# end
+#
 
-for y in 1940..2020 do
-  ItemVintage.find_or_create_by({year: y}).save
+def get_year(yy)
+  if yy > 20
+    yy + 1900
+  elsif yy <= 20
+    yy + 2000
+  end
 end
 
+Item.all.each do |i|
+  item = i.name.split(" - ");
+  if item.count > 1
+    yy = get_year(item[1].to_i)
+    puts "#{item[0]}, #{item[1]}, #{yy}"
+
+    vintage = ItemVintage.where(year: yy).first
+    i.vintage_id = vintage.id
+    i.name = item[0]
+    i.save!
+  end
+end

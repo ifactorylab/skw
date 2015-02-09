@@ -4,7 +4,7 @@ class ItemVintagesController < ApplicationController
   respond_to :html
 
   def index
-    @item_vintages = ItemVintage.all
+    @item_vintages = ItemVintage.order(year: :asc)
     respond_with(@item_vintages)
   end
 

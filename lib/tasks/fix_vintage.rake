@@ -1,4 +1,5 @@
-task :greet do
+
+task :fix_vintage => :environment do
   def get_year(yy)
     if yy > 20
       yy + 1900
